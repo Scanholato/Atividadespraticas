@@ -1,0 +1,22 @@
+
+# Mas permitir as pastas de atividades
+!atividade01/
+!atividade02/
+!atividade03/
+!atividade04/
+!atividade05/
+!atividade07/
+
+# Se no futuro você criar atividade08, 09... só adicionar:
+# !atividade08/
+# !atividade09/
+
+# Ignorar ambientes virtuais e lixo do Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+.env/
+.venv
