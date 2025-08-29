@@ -1,6 +1,15 @@
 import csv
 
-with open("pessoas.csv", "r", encoding="utf-8") as arquivo:
-    leitor = csv.DictReader(arquivo)
-    for linha in leitor:
-        print(f"Nome: {linha['Nome']}, Idade: {linha['Idade']}, Cidade: {linha['Cidade']}")
+def ler_csv(nome_arquivo):
+    try:
+        with open(nome_arquivo, 'r', newline='', encoding='utf-8') as arquivo_csv:
+            leitor = csv.reader(arquivo_csv)
+            for linha in leitor:
+                print(linha)
+    except FileNotFoundError:
+        return(f"Arquivo não encontrado")
+
+
+
+nome_arquivo = input("Digite o nome do arquivo: ")
+print(ler_csv(nome_arquivo))

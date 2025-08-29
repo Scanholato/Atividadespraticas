@@ -1,17 +1,23 @@
+
 import csv
 
-# Dados
-pessoas = [
-    {"Nome": "Murilo", "Idade": 30, "Cidade": "Águas de São Pedro"},
-    {"Nome": "Carlota", "Idade": 28, "Cidade": "Santos"},
-    {"Nome": "João", "Idade": 25, "Cidade": "São Paulo"}
+def escrever_csv(nome_arquivo, dados):
+    try:
+        with open(nome_arquivo, 'w', newline='', encoding='utf-8') as arquivo_csv:
+            escritor = csv.writer(arquivo_csv)
+            escritor.writerow(['Nome', 'Idade', 'Cidade'])
+            for linha in dados:
+                escritor.writerow(linha)
+            return (f"Dados salvos em {nome_arquivo}")
+    except Exception as e:
+        return(f"Erro ao escrever no arquivo: {e}")
+
+
+dados = [
+    ['Murilo', 31, 'Santo André'],
+    ['Carolina', 28, 'Santos'],
+    ['Thor', 12, 'São Vicente']
 ]
 
-# Escrevendo CSV
-with open("pessoas.csv", "w", newline="", encoding="utf-8") as arquivo:
-    colunas = ["Nome", "Idade", "Cidade"]
-    escritor = csv.DictWriter(arquivo, fieldnames=colunas)
-    escritor.writeheader()
-    escritor.writerows(pessoas)
-
-print("Arquivo CSV criado com sucesso!")
+nome_arquivo = input("Digite o nome do arquivo: ")
+print(escrever_csv(nome_arquivo, dados))
